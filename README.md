@@ -24,9 +24,9 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 (1) Data Source
 
   (a) Federal Reserve Economic Data (FRED)
-
+  
   (b) Series: GDPC1 (Real Gross Domestic Product)
-
+  
   (c) Frequency: Quarterly, 1947Q1–2024Q2
 
 (2) Methodological Steps
@@ -40,7 +40,7 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
   (d) ACF/PACF visual inspection
 
   (e) Model selection using AIC / BIC
-
+  
   (f) auto.arima() model search
 
   (g) Training / Validation split
@@ -49,19 +49,19 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 
   (i) Residual diagnostics
 
-    (i) Ljung–Box test
+   (i) Ljung–Box test
 
-    (ii) Jarque–Bera test
+   (ii) Jarque–Bera test
 
-    (iii) Heteroskedasticity test (White test)
+   (iii) Heteroskedasticity test (White test)
 
-    (iv) Q-Q plot
+   (iv) Q-Q plot
 
   (j) Performance evaluation
 
-    (i) MAE
+   (i) MAE
 
-    (ii) RMSE
+   (ii) RMSE
 
 ## 3. Main Results
 
@@ -86,11 +86,11 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 
 (4) Residual Diagnostics
 
- (a) No serial correlation (Ljung-Box p = 0.86)
+  (a) No serial correlation (Ljung-Box p = 0.86)
+
+  (b) Residuals non-normal (JB p ≈ 0)
  
- (b) Residuals non-normal (JB p ≈ 0)
- 
- (c) Residuals homoskedastic (White test p = 0.09)
+  (c) Residuals homoskedastic (White test p = 0.09)
  
 ## 4. My personally expected Future Work
 
