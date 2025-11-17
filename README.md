@@ -1,43 +1,33 @@
-Time Series Analysis of U.S.A. Real GDP (1947–2024)
+# Time Series Analysis of U.S.A. Real GDP (1947–2024)
 
-This repository contains an empirical time-series analysis of U.S. Real Gross Domestic Product (Real GDP) using ARIMA models.
-The project includes:
+  This repository contains an empirical time-series analysis of U.S. Real Gross Domestic Product (Real GDP) using ARIMA models.
+  
+  The project includes:
+  
+  TimesSeries_RealGDP.pdf – Full research report
+  
+  TimeSeries_realGDP.R (from PDF) – R code for data processing, modeling, and diagnostics
+  
+  Raw Data – Real GDP quarterly data retrieved from FRED
+  
+  This study demonstrates a complete workflow for univariate time-series modeling, including stationarity testing, ARIMA model selection, forecasting, and residual diagnostics.
 
-TimesSeries_RealGDP.pdf – Full research report
-
-TimeSeries_realGDP.R (from PDF) – R code for data processing, modeling, and diagnostics
-
-Raw Data – Real GDP quarterly data retrieved from FRED
-
-This study demonstrates a complete workflow for univariate time-series modeling, including stationarity testing, ARIMA model selection, forecasting, and residual diagnostics.
-
-##### 1. Research Objective #####
+## 1. Research Objective
 
 Real GDP is one of the most essential macroeconomic indicators for understanding economic growth, business cycles, and policy impact.
 The objective of this project is:
 
 To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and evaluate its forecasting performance.
 
-#####
-
-##### 2. Repository Structure ######
-
-├── README.md
-├── TimesSeries_RealGDP.pdf       # Full research paper
-├── TimeSeries_realGDP.pdf        # R code (extracted from PDF)
-├── usa_realgdp.csv               # Real GDP data from FRED
-
-#####
-
-##### 3. Methodology Overview #####
+## 2. Methodology Overview
 
 (1) Data Source
 
-  Federal Reserve Economic Data (FRED)
+  (a) Federal Reserve Economic Data (FRED)
 
-  Series: GDPC1 (Real Gross Domestic Product)
+  (b) Series: GDPC1 (Real Gross Domestic Product)
 
-  Frequency: Quarterly, 1947Q1–2024Q2
+  (c) Frequency: Quarterly, 1947Q1–2024Q2
 
 (2) Methodological Steps
 
@@ -73,9 +63,7 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 
     (ii) RMSE
 
-#####
-
-##### 4. Main Results #####
+## 3. Main Results
 
 (1) Stationarity
 
@@ -104,12 +92,10 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
  
  (c) Residuals homoskedastic (White test p = 0.09)
  
-##### 5. My personally expected Future Work #####
+## 4. My personally expected Future Work
 
   (1) SARIMA — captures quarterly seasonality
 
   (2) ARIMAX / Dynamic Regression — incorporate macro factors
-
-#####
 
 Thank you!
