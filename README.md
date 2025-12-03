@@ -23,11 +23,11 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 
 (1) Data Source
 
-  (a) Federal Reserve Economic Data (FRED)
-  
-  (b) Series: GDPC1 (Real Gross Domestic Product)
-  
-  (c) Frequency: Quarterly, 1947Q1–2024Q2
+	(a) Federal Reserve Economic Data (FRED)
+	
+	(b) Series: GDPC1 (Real Gross Domestic Product)
+	
+	(c) Frequency: Quarterly, 1947Q1–2024Q2
 
 (2) Methodological Steps
 
