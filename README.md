@@ -92,7 +92,7 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
  
   (c) Residuals homoskedastic (White test p = 0.09)
  
-## 4. My personally expected Future Work
+## 4. Expected Future Work
 
   (1) SARIMA — captures quarterly seasonality
 
