@@ -4,13 +4,23 @@
   
   The project includes:
   
-	  TimesSeries_RealGDP.pdf – Full research report
+	  TimesSeries_RealGDP.pdf – Full research report ;
 	  
-	  TimeSeries_realGDP.R (from PDF) – R code for data processing, modeling, and diagnostics
+	  TimeSeries_realGDP.R – R code for data processing, modeling, and diagnostics ;
 	  
-	  Raw Data – Real GDP quarterly data retrieved from FRED
+	  Raw Data – Real GDP quarterly data retrieved from Federal Reserve Economic Data (FRED).
   
-  This study demonstrates a complete workflow for univariate time-series modeling, including stationarity testing, ARIMA model selection, forecasting, and residual diagnostics.
+  This study demonstrates a workflow for univariate time-series modeling, including：
+  
+  		stationarity testing ;
+		
+		ARIMA model order selection ;
+		
+		Model diagnostics ;
+		
+		forecasting ;
+		
+		residual diagnostics.
 
 ## 1. Research Objective
 
@@ -67,9 +77,9 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 
 (1) Stationarity
 
-	(a) Original GDP is non-stationary (ADF p = 0.98)
+	(a) Original GDP is non-stationary (ADF P-value = 0.98)
 	
-	(b) log-difference is stationary (ADF p < 0.01)
+	(b) log-difference is stationary (ADF P-value = 0.01)
 
 (2) Model Selection
 
@@ -86,16 +96,18 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 
 (4) Residual Diagnostics
 
-	(a) No serial correlation (Ljung-Box p = 0.86)
-	
-	(b) Residuals non-normal (JB p ≈ 0)
-	
-	(c) Residuals homoskedastic (White test p = 0.09)
+| Test | Result | Interpretation |
+|----|------|----------------|
+| Ljung – Box | P-value = 0.86 | No serial correlation. |
+| Jarque – Bera | P-value < 2.2e-16 | Residuals do not follow Normal Distribution. |
+| White Test | P-value = 0.09 | Residuals are Homoskedastic|
  
 ## 4. Expected Future Works
 
-(1) SARIMA — captures quarterly seasonality
+(1) Machine Learning (LASSO, Least absolute shrinkage and selection operator, L1 regularization)
 
-(2) ARIMAX / Dynamic Regression — incorporate macro factors
+(2) SARIMA — captures quarterly seasonality
+
+(3) ARIMAX / Dynamic Regression — incorporate macro factors
 
 Thank you!
