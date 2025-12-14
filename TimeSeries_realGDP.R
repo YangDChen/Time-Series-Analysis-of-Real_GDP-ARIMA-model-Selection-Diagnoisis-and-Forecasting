@@ -8,15 +8,15 @@ library(dplyr)
 library(lmtest)
 library(tseries)
 library(forecast)
-#library(FinTS) #ArchTest()
-#library(sandwich) #Newey-West 標準誤
-#library(EnvStats)
-#library(moments)
-#library(psych) #要拿describe()算敘述統計量(可略過不用，用summary()就好)
+
+#Import Data
 
 r.File <- "/Users/yangchen/R_files/Thesis/RealGDP_Data/usa_realgdp.csv"
 data <- read_csv(r.File, col_names = TRUE)
 
+#分兩部分畫圖，第一部分是Raw Data, 第二部分是取對數並差分後的Data (目的是將非定態時間序列資料轉成定態時間序列資料)
+
+#第一部分 (Raw Data, non-stationary data)
 breaks_realgdp <- seq.Date(from = as.Date("1954-01-01"), 
                                to = as.Date("2024-07-01"), 
                                by = "10 years")
@@ -31,12 +31,15 @@ ggplot(data, aes(x = Date, y = Real_GDP)) +
                ) +
   theme_bw()
 
+#將Raw Data(Non-stationary data)進行資料處理，轉成Processed Data(Stationary data)
+
 real.gdp <- data$Real_GDP
 log_real_gdp <- diff(log(real.gdp))
 
 log_data <- tibble(Date = data$Date[-1],
                    log_real_GDP = log_real_gdp
                    )
+#第二部分 (Processed Data, stationary data)
 
 breaks_log_realgdp <- seq.Date(from = as.Date("1954-01-01"), 
                        to = as.Date("2024-07-01"), 
@@ -51,6 +54,8 @@ ggplot(log_data, aes(x = Date, y = log_real_GDP)) +
                labels = format(breaks_log_realgdp, "%Y-%m-%d")
                ) +
   theme_bw()
+
+#Descriptive Statistics
 
 sumstats <- function(data) {
   data.frame(
@@ -67,19 +72,22 @@ sumstats <- function(data) {
 real_gdp_stats <- sumstats(real.gdp)
 log_real_gdp_stats <- sumstats(log_real_gdp)
 
-#分開呈現不同資料敘述統計量的表格
+#分別呈現Raw Data(Non-stationary data), Processed Data(Statioinary data)之敘述統計量的table
+
 cat("Statistics for real.gdp:\n")
 kable(real_gdp_stats, caption = "Summary Statistics of real.gdp (Raw Data)")
 cat("\nStatistics for log_real_gdp:\n")
 kable(log_real_gdp_stats, caption = "Summary Statistics of log_real_gdp (Processed Data)")
 
-##上下合併在一起呈現
+#呈現方式一：上下合併
 #rbind() = row bind 照row的方向合併
+
 combined_stats <- rbind(real_gdp_stats, log_real_gdp_stats)
 
-#左右合併
+#呈現方式二：左右合併
 #data.drame()本質上是靠逐列(column)去建構的，且適合用在建構異質資料框(意即column可以存在不同類型，如character和numeric)；
 #相對來說，cbind()需要所有column都是相同類型，否則需要再包一層as.data.frame()來轉換成資料框
+
 combined_stats <- data.frame(Statistic = real_gdp_stats$Statistic,
                              Real_GDP = real_gdp_stats$Value,
                              Log_Real_GDP = log_real_gdp_stats$Value
@@ -87,15 +95,19 @@ combined_stats <- data.frame(Statistic = real_gdp_stats$Statistic,
 
 kable(combined_stats, caption = "Summary Statistics of Real GDP (Raw Data) and Log Real GDP (Processed Data)")
 
-#kable(combined_stats, caption = "Summary Statistics of Raw Data and Processed Data") %>%
-  #kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed"))
+#再單獨個別計算Descriptive statistics一次, 目的是驗證(其結果和我們上面用function計算結果一樣)
 
 summary(log_real_gdp)
 sd(log_real_gdp)
 skew(log_real_gdp)
 kurtosi(log_real_gdp)
 
+#分別對Raw Data(Non-stationary data), Processed Data(Statioinary data)去進行ADF test
+
+adf.test(real.gdp)
 adf.test(log_real_gdp)
+
+#畫ACF, PACF圖
 
 acf <- acf(log_real_gdp)
 pacf <- pacf(log_real_gdp)
@@ -104,9 +116,13 @@ par(mfrow=c(2,1))
 plot(acf, main = "ACF of Logarithmic real GDP")
 plot(pacf, main = "PACF of Logarithmic real GDP")
 
+#將Processed Data(Stationary data)拆分成訓練集(Train set)與驗證集(Validation set)
+
 log_data$year <- as.numeric(format(log_data$Date, "%Y"))
 train_data <- subset(log_data, year <= 2022)
 validation_data <- subset(log_data, year > 2022)
+
+#不同模型階數(order)選擇與計算AIC, BIC
 
 orders <- list(c(1, 0, 0), c(2, 0, 0), c(3, 0, 0), c(1, 0, 1), c(1, 0, 2), 
                c(1, 0, 3), c(2, 0, 1), c(2, 0, 2), c(2, 0, 3)
@@ -140,34 +156,30 @@ min_bic_model <- results %>%
 cat("Model with Minimum AIC:", min_aic_model, "\n")
 cat("Model with Minimum BIC:", min_bic_model, "\n")
 
+#也可以用auto.arima()來自動選擇模型
+
 model <- auto.arima(train_data$log_real_GDP)
 model
 
-#或者手動選模型期數
+#手動選模型期數的寫法
+
 arima_model_10 <- Arima(train_data$log_real_GDP, order = c(1, 0, 0))
 arima_model_10
 
 forecasted_values <- forecast(model, h = nrow(validation_data))
 
-#拿模型做完預測值後，計算一下MAE, RMSE, MAPE
-#要拿預測值和實際值(測試集資料)，來透過MAE, RMSE, MAPE評估模型的適配程度
-accuracy(forecasted_values$mean, validation_data$log_real_GDP)
+#拿模型做完預測值後，計算一下MAE, RMSE
+#拿預測值和實際值(測試集資料)，來透過MAE, RMSE指標去評估模型的適配程度
 
-#手動計算R^2
-# actual <- validation_data$log_real_GDP
-# predicted <- as.numeric(forecasted_values$mean)
-# 
-# sst <- sum((actual - mean(actual))^2)  # 總平方和
-# sse <- sum((actual - predicted)^2)  # 殘差平方和
-# ssr <- sum((predicted - mean(actual))^2) #
-# r_squared <- 1 - (sse / sst)
-# r_squared
+accuracy(forecasted_values$mean, validation_data$log_real_GDP)
 
 forecasted_data <- log_data %>% 
   mutate(forecasts_real_GDP = ifelse(year > 2022, forecasted_values$mean, NA))
 
 filtered_gdp_all <- forecasted_data %>% 
   filter(Date <= as.Date("2024-07-01"))
+
+#畫ARMA(1,0)模型產出之預測值的圖(2002-01-01 - 2024-07-01)
 
 breaks_all <- seq.Date(from = as.Date("2022-01-01"), 
                        to = as.Date("2024-07-01"), 
@@ -198,22 +210,34 @@ ggplot(filtered_gdp_all, aes(x = Date)) +
          shape = guide_legend(title = NULL, label.position = "right")) +
   theme_bw()
 
+#殘差分析
+
 residuals <- residuals(model)
+
+#殘差分析一：序列相關(Serial correlation)
 
 ljung_box_test <- Box.test(residuals, lag = 17, type = "Ljung-Box")
 ljung_box_test
 summary(model)
 
+#殘差分析二：資料是否服從常態分配
+
 jarque.bera.test(residuals)
+
+#畫出Q-Q plot (Quantile-Quantile plot, Q-Q plot)
 
 qqnorm(residuals, pch = 1) 
 qqline(residuals, lwd = 2)
+
+#殘差分析三：同質性檢定(Homoskedasticity), using White test
 
 lm_residuals <- lm(residuals ~ train_data$log_real_GDP)
 
 bptest(lm_residuals, studentize = FALSE)
 
 coeftest(lm_residuals, vcov. = NeweyWest(lm_residuals))
+
+#畫殘差之時間序列圖
 
 dates <- seq.Date(from = as.Date("1947-01-01"), 
                   by = "quarter", 
@@ -227,5 +251,8 @@ axis(1, at = seq(as.Date("1950-01-01"), as.Date("2020-01-01"), by = "10 years"),
 
 grid()
 
+#畫殘差之密度圖
+
 plot(density(residuals), main = "Residuals Density of ARMA model", xlab = "Residuals", ylab = "Density")
+
 grid()
