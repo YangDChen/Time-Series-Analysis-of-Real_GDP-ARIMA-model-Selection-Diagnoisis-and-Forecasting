@@ -14,8 +14,8 @@ data["log_real_GDP"] = np.log(data["Real_GDP"]).diff()
 log_data = data.dropna(subset = ["log_real_GDP"]).copy()
 
 log_data["year"] = log_data["Date"].dt.year
-train_data = log_data[log_data["year"] <= 2022].reset_index(drop = True)  # 訓練集
-validation_data = log_data[log_data["year"] > 2022].reset_index(drop = True)  # 驗證集
+train_data = log_data[log_data["year"] <= 2022].reset_index(drop = True)  #訓練集
+validation_data = log_data[log_data["year"] > 2022].reset_index(drop = True)  #驗證集
 
 train_data.set_index("Date", inplace=True)
 
