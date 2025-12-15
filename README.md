@@ -22,12 +22,16 @@
 		
 		residual diagnostics.
 
+---
+
 ## 1. Research Objective
 
 Real GDP is one of the most essential macroeconomic indicators for understanding economic growth, business cycles, and policy impact.
 The objective of this project is:
 
 To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and evaluate its forecasting performance.
+
+---
 
 ## 2. Methodology Overview
 
@@ -73,6 +77,8 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 		
 		(ii) RMSE
 
+---
+
 ## 3. Main Results
 
 (1) Stationarity
@@ -101,7 +107,9 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 | Ljung – Box | P-value = 0.86 | No serial correlation. |
 | Jarque – Bera | P-value < 2.2e-16 | Residuals do not follow Normal Distribution. |
 | White Test | P-value = 0.09 | Residuals are Homoskedastic|
- 
+
+---
+
 ## 4. Expected Future Works
 
 (1) Machine Learning (LASSO, Least absolute shrinkage and selection operator, L1 regularization)
@@ -109,5 +117,7 @@ To build an ARIMA model for U.S. Real GDP (quarterly data from 1947–2024) and 
 (2) SARIMA — captures quarterly seasonality
 
 (3) ARIMAX / Dynamic Regression — incorporate macro factors
+
+---
 
 Thank you!
