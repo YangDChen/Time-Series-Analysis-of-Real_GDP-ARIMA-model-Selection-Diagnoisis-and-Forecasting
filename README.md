@@ -5,7 +5,7 @@
 
 	- 研究資料：資料取自FRED(代號 = GDPC1)，季資料，1947Q1–2024Q2。（Data: FRED(Code = GDPC1), quarterly, 1947 Q1 – 2024 Q2.）
 	
-	- 核心模型：根據BIC資訊評選準則，選擇較精簡的 ARMA(1,0)。（Core model: ARMA(1,0) selected by BIC.）
+	- 主要模型：根據BIC資訊評選準則，選擇較精簡的 ARMA(1,0)。（Core model: ARMA(1,0) selected by BIC.）
 	
 	- 評估方式：將訓練集/驗證集作切分，使用 MAE、RMSE。（Evaluation: train/validation split with MAE and RMSE.）
 	
