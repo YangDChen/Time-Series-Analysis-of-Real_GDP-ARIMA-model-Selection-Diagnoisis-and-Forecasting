@@ -82,7 +82,7 @@
 
 | 資料集（Data set） | 起始日 (Beginning date) | 結束日（End date） |
 |---|---:|---:|
-| 訓練集（Train | 1947-01-01 | 2022-10-01 |
+| 訓練集（Train） | 1947-01-01 | 2022-10-01 |
 | 驗證集（Validation） | 2023-01-01 |  2024-07-01 |
 
 ### 預測表現（Forecast Performance）
