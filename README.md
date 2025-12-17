@@ -16,8 +16,8 @@
 
 
 ## 重點摘要（Quick start!）
-- 文章全文（Full report）：[`report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf`](report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf)
-- 主要程式碼（Main R script）：[`code/TimeSeries_RealGDP.R`](code/TimeSeries_RealGDP.R)
+- 文章全文（Full report）：[`report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf`](Report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf)
+- 主要程式碼（Main R script）：[`code/TimeSeries_RealGDP.R`](Code/TimeSeries_RealGDP.R)
 
 ---
 
