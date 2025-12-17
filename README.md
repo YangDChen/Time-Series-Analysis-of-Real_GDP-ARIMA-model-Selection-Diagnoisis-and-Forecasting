@@ -24,7 +24,7 @@
 
 ## 專案內容（Repository Contents）
 - `report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf`（完整研究報告 / Full report）
-- `code/TimeSeries_RealGDP.R`（資料處理、模型選擇、預測、診斷 / Data processing, model selection, forecasting, diagnostics）
+- `code/TimeSeries_RealGDP.R`（資料處理、模型選擇、預測、分析 / Data processing, model selection, forecasting, diagnostics）
 - `data/usa_readgdp.csv`（原始資料 / Raw data）
 - `figures/`（圖表 / Figures）
 
@@ -46,6 +46,7 @@
 ### 資料來源（Data Source）
 
 - FRED：GDPC1（Real Gross Domestic Product）
+
 - 資料頻率與期間：季資料，1947Q1–2024Q2（Quarterly, 1947 Q1 – 2024 Q2）
 
 ### 模型建構流程（Workflow）
@@ -92,13 +93,13 @@
 | MAE（Mean Absolute Error） | 0.0070 | 0.0015 |
 | RMSE（Root Mean Squared Error） | 0.0112 | 0.0019 |
 
-### 殘差分析（Residual Diagnostics）
+### 殘差分析（Residual Diagnostics） 以下皆假設顯著水準 = 0.05
 
-- Ljung–Box：未發現顯著序列相關（No serial correlation detected）。
+- Ljung–Box test：無序列相關（No serial correlation detected）。
   
-- Jarque–Bera：殘差不服從常態，具厚尾特性（Residuals are non-normal with heavy tails）。
+- Jarque–Bera test：不服從常態分配，且具厚尾特性（Residuals are non-normal with heavy tails）。
   
-- White / 同質性檢定：在 5% 顯著水準下不拒絕同質性（Fail to reject homoskedasticity at 5% level）。
+- White test：在顯著水準 = 0.05下，無法拒絕誤差項同質變異之虛無假設，顯示模型未發現顯著的異質性問題（Fail to reject homoskedasticity at 5% level）。
 
 ---
 
