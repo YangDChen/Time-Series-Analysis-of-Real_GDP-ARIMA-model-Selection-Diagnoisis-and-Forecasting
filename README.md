@@ -18,13 +18,14 @@
 ## 重點摘要（Quick start!）
 - 文章全文（Full report）：[`report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf`](report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf)
 - Code（Main Code）：[`code/TimeSeries_RealGDP.R`](code/TimeSeries_RealGDP.R)
+- 資料集（Data）：[`data/usa_readgdp.csv`](data/usa_realgdp.csv)
 
 ---
 
 ## 專案內容（Repository Contents）
 - `report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf`（完整研究報告 / Full report）
 - `code/TimeSeries_RealGDP.R`（資料處理、模型選擇、預測、診斷 / Data processing, model selection, forecasting, diagnostics）
-- `data/`（原始資料 / Raw data）
+- `data/usa_readgdp.csv`（原始資料 / Raw data）
 - `figures/`（圖表 / Figures）
 
 ---
@@ -100,27 +101,29 @@
 
 ---
 
-## 如何重現結果（Reproducibility）
+## 如何重現結果?（How to Reproduce?）
 
-1. 安裝套件（Install packages）：`forecast`, `tseries`, `lmtest`, `ggplot2`, `dplyr`, `psych`, `knitr`, `kableExtra`
+1. 打開R Studio，或者你可以在R語言的Console中，去安裝套件（Install packages）：`forecast`, `tseries`, `lmtest`, `ggplot2`, `dplyr`, `psych`, `knitr`, `kableExtra`
    
 2. 下載資料（Download data）：
-   - 將 `usa_realgdp.csv` 放在 `data/raw/`（或改用資料下載腳本）
-   - 並在 R code 中改用相對路徑（use relative paths）
+   - 請點擊此連結：[`data/usa_readgdp.csv`](data/usa_realgdp.csv)
 
-3. 執行程式（Run the script）：
-   - `code/TimeSeries_RealGDP.R`
+3. 複製此Code（Copy this Code）：
+   - [`code/TimeSeries_RealGDP.R`](code/TimeSeries_RealGDP.R)
+
+4. 執行Code! (Run Code!)
 
 ---
 
 ## 未來延伸方向（Future Work）
+
 - 季節性模型：SARIMA（Seasonality-aware SARIMA）
   
 - 加入外生變數：ARIMAX / Dynamic Regression（ARIMAX / dynamic regression with macro factors）
-
----
   
 - 機器學習方法：例如 LASSO（Machine learning approaches such as LASSO）
+
+---
 
 ## 引用方式（Citation）
 
