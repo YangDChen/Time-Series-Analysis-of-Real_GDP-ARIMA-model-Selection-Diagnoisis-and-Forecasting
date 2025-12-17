@@ -19,6 +19,8 @@
 - 文章全文（Full report）：[`report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf`](report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf)
 - 主要程式碼（Main R script）：[`code/TimeSeries_RealGDP.R`](code/TimeSeries_RealGDP.R)
 
+---
+
 ## 專案內容（Repository Contents）
 - `report/實質GDP的時間序列分析_ARIMA模型選擇與預測.pdf`（完整研究報告 / Full report）
 - `code/TimeSeries_RealGDP.R`（資料處理、模型選擇、預測、診斷 / Data processing, model selection, forecasting, diagnostics）
@@ -42,7 +44,7 @@
 - FRED：GDPC1（Real Gross Domestic Product）
 - 資料頻率與期間：季資料，1947Q1–2024Q2（Quarterly, 1947 Q1 – 2024 Q2）
 
-### 建模流程（Workflow）
+### 模型建構流程（Workflow）
 
 1. 資料視覺化與初步檢視（Visualization & EDA）
    
@@ -61,6 +63,8 @@
 8. 殘差診斷與檢定（Residual diagnostics: Ljung–Box, Jarque–Bera, White test）
     
 9. 以 MAE / RMSE 評估預測誤差（Forecast evaluation using MAE/RMSE）
+
+---
 
 ## 主要結果（Main Results）
 
@@ -91,6 +95,8 @@
   
 - White / 同質性檢定：在 5% 顯著水準下不拒絕同質性（Fail to reject homoskedasticity at 5% level）。
 
+---
+
 ## 如何重現結果（Reproducibility）
 
 1. 安裝套件（Install packages）：`forecast`, `tseries`, `lmtest`, `ggplot2`, `dplyr`, `psych`, `knitr`, `kableExtra`
@@ -102,10 +108,14 @@
 3. 執行程式（Run the script）：
    - `code/TimeSeries_RealGDP.R`
 
+---
+
 ## 未來延伸方向（Future Work）
 - 季節性模型：SARIMA（Seasonality-aware SARIMA）
   
 - 加入外生變數：ARIMAX / Dynamic Regression（ARIMAX / dynamic regression with macro factors）
+
+---
   
 - 機器學習方法：例如 LASSO（Machine learning approaches such as LASSO）
 
