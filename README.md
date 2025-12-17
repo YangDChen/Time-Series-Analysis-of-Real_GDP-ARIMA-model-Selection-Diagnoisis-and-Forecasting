@@ -103,7 +103,7 @@
 
 ## 如何重現結果?（How to Reproduce?）
 
-1. 打開R Studio，或者你可以在R語言的Console中，去安裝套件（Install packages）：`forecast`, `tseries`, `lmtest`, `ggplot2`, `dplyr`, `psych`, `knitr`, `kableExtra`
+1. 打開R Studio，或者你可以在R語言的Console中，首先安裝套件（Install packages）：`readr`,`ggplot2`,`psych`,`knitr`,`kableExtra`,`magrittr`,`dplyr`,`lmtest`,`tseries`,`forecast`,
    
 2. 下載資料（Download data）：
    - 請點擊此連結：[`data/usa_readgdp.csv`](data/usa_realgdp.csv)
