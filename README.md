@@ -31,13 +31,18 @@
 ---
 
 ## 摘要（Abstract）
-	本研究採用時間序列分析方法，針對美國實質國內生產毛額(Real Gross Domestic Product, Real GDP)進行實證研究與預測分析。研究資料取自美國聯邦儲備系統經濟資料庫(Federal Reserve Economic Data, FRED)，樣本期間為1947年第一季至2024年第二季，資料頻率為季資料。考量實質GDP之原始資料具有明顯趨勢與非定態特性，本研究透過取自然對數轉換與一階差分方式，將原始資料轉換為定態時間序列，並使用Augmented Dickey-Fuller (ADF)檢定，確認其定態性。
+	本研究採用時間序列分析方法，針對美國實質國內生產毛額(Real Gross Domestic Product, Real GDP)進行實證研究與預測分析。
+	研究資料取自美國聯邦儲備系統經濟資料庫(Federal Reserve Economic Data, FRED)，樣本期間為1947年第一季至2024年第二季，資料頻率為季資料。
+	考量實質GDP之原始資料具有明顯趨勢與非定態特性，本研究透過取自然對數轉換與一階差分方式，將原始資料轉換為定態時間序列，並使用Augmented Dickey-Fuller (ADF)檢定，確認其定態性。
 	
-	在模型建構方面，本研究採用自我迴歸整合移動平均模型(ARIMA)，並結合自相關函數(ACF)、偏自相關函數(PACF)、赤池與貝氏資訊評選準則(Akaike Information Criterion, AIC；Bayesian Information Criterion, BIC)進行模型期數(Order)選擇。實證結果顯示，在大樣本情況下，依據BIC準則，會選取之較精簡模型：ARMA(1,0)。接下來，本研究進一步將樣本劃分為訓練集與驗證集，以樣本外預測作為模型效能評估依據，並以平均絕對誤差(MAE)與均方根誤差(RMSE)衡量預測準確度。
+	在模型建構方面，本研究採用自我迴歸整合移動平均模型(ARIMA)，並結合自相關函數(ACF)、偏自相關函數(PACF)、赤池與貝氏資訊評選準則(Akaike Information Criterion, AIC；Bayesian Information Criterion, BIC)進行模型期數(Order)選擇。
+	實證結果顯示，在大樣本情況下，依據BIC準則，會選取之較精簡模型：ARMA(1,0)。
+	接下來，本研究進一步將樣本劃分為訓練集與驗證集，以樣本外預測作為模型效能評估依據，並以平均絕對誤差(MAE)與均方根誤差(RMSE)衡量預測準確度。
 	
 	殘差分析結果顯示，模型殘差不具顯著序列相關性，顯示ARMA(1,0)能有效捕捉實質GDP成長率之主要動態結構，並且符合同質性假設，但不服從常態分配，呈現厚尾(Heavy tailed)特性。
 	
-	實證結果顯示，ARMA(1,0)模型在經過訓練集擬合後，於驗證集中之預測表現有所提升，且模型之一階自我迴歸係數在統計上顯著。不過，由於模型僅考慮了一階自我迴歸項與常數項，對於波動較為劇烈之時間序列資料，其適用性可能受限，因此，未來仍有進一步改良與延伸模型之研究空間。
+	實證結果顯示，ARMA(1,0)模型在經過訓練集擬合後，於驗證集中之預測表現有所提升，且模型之一階自我迴歸係數在統計上顯著。
+	不過，由於模型僅考慮了一階自我迴歸項與常數項，對於波動較為劇烈之時間序列資料，其適用性可能受限，因此，未來仍有進一步改良與延伸模型之研究空間。
 
 ---
 
@@ -54,17 +59,17 @@
    
 2. 取自然對數並作一階差分，將原始非定態時間序列轉換為定態時間序列（Log transform & first differencing）
    
-3. ADF 定態性檢定（ADF stationarity test）
+3. 使用ADF test進行定態性檢定（ADF stationarity test）
    
-4. ACF/PACF 輔助判斷期數（ACF/PACF inspection）
+4. 根據ACF/PACF圖輔助判斷期數（ACF/PACF inspection）
    
-5. 以 AIC/BIC 進行模型比較（Model selection via AIC/BIC）
+5. 根據AIC/BIC資訊評選準則進行模型比較（Model selection via AIC/BIC）
     
 6. 使用 `auto.arima()` 交叉驗證模型期數（Cross-check with `auto.arima()`）
     
-7. 訓練集/驗證集切分，做樣本外預測（Train/validation split and out-of-sample forecasting）
+7. 將訓練集/驗證集切分，做樣本外預測（Train/validation split and out-of-sample forecasting）
     
-8. 殘差診斷與檢定（Residual diagnostics: Ljung–Box, Jarque–Bera, White test）
+8. 殘差分析與檢定（Residual diagnostics: Ljung–Box, Jarque–Bera, White test）
     
 9. 以 MAE / RMSE 評估預測誤差（Forecast evaluation using MAE/RMSE）
 
@@ -76,7 +81,7 @@
 
 - 根據資訊評選準則，即AIC與BIC，前者偏好較複雜的模型；而在大樣本下，後者則偏好較精簡的模型，我最終選擇ARMA(1,0)作為主要模型。（AIC tends to favor more complex models; BIC prefers parsimonious models in large samples—final choice: ARMA(1,0).）
   
-- 根據`auto.arima()` ，也得到ARMA(1,0)模型之結果。（`auto.arima()` also selects ARMA(1,0).）
+- 根據`auto.arima()` ，也可以得到ARMA(1,0)模型之結果。（`auto.arima()` also selects ARMA(1,0).）
 
 ### 樣本切分（Train/Validation Split）
 
