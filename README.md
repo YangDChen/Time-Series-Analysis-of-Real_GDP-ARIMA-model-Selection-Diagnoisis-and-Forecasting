@@ -1,4 +1,5 @@
-# Time Series Analysis of U.S.A. Real GDP (1947–2024)
+# 實質GDP的時間序列分析：ARIMA模型選擇與預測 (Time Series Analysis of Real GDP: ARIMA Model Selection and Forecasting)
+
 
   This repository contains an empirical time-series analysis of U.S. Real Gross Domestic Product (Real GDP) using ARIMA models.
   
