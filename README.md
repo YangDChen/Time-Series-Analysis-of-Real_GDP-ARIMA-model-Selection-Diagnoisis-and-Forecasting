@@ -93,7 +93,7 @@
 | MAE（Mean Absolute Error） | 0.0070 | 0.0015 |
 | RMSE（Root Mean Squared Error） | 0.0112 | 0.0019 |
 
-### 殘差分析（Residual Diagnostics） 以下皆假設顯著水準 = 0.05
+### 殘差分析（Residual Diagnostics） （以下皆假設顯著水準 = 0.05）
 
 - Ljung–Box test：無序列相關（No serial correlation detected）。
   
@@ -110,7 +110,7 @@
    `readr`,`ggplot2`,`psych`,`knitr`,`kableExtra`,`magrittr`,`dplyr`,`lmtest`,`tseries`,`forecast`
    
 3. 下載資料（Download data）：
-   - 請點擊此連結：[`data/usa_readgdp.csv`](data/usa_realgdp.csv)
+   - [`data/usa_readgdp.csv`](data/usa_realgdp.csv)
 
 4. 複製此Code（Copy this Code）：
    - [`code/TimeSeries_RealGDP.R`](code/TimeSeries_RealGDP.R)
