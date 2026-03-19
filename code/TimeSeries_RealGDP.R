@@ -229,14 +229,6 @@ jarque.bera.test(residuals)
 qqnorm(residuals, pch = 1) 
 qqline(residuals, lwd = 2)
 
-#殘差分析三：同質性檢定(Homoskedasticity), using White test
-
-lm_residuals <- lm(residuals ~ train_data$log_real_GDP)
-
-bptest(lm_residuals, studentize = FALSE)
-
-coeftest(lm_residuals, vcov. = NeweyWest(lm_residuals))
-
 #畫殘差之時間序列圖
 
 dates <- seq.Date(from = as.Date("1947-01-01"), 
