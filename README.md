@@ -98,8 +98,6 @@
 - Ljung–Box test：無序列相關（No serial correlation detected）。
   
 - Jarque–Bera test：不服從常態分配，且具厚尾特性（Residuals are non-normal with heavy tails）。
-  
-- White test：在顯著水準 = 0.05下，無法拒絕誤差項同質變異之虛無假設，顯示模型未發現顯著的異質性問題（Fail to reject homoskedasticity at 5% level）。
 
 ---
 
